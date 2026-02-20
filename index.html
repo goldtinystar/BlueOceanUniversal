@@ -221,7 +221,14 @@ They moved fast, asked the right questions, and delivered production-ready solut
           var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
           var scrollTop = $scrollTo.offset().top - 60;
           if (animate) {
-            $('html, body').animate({ scrollTop: scrollTop }, 400, function () { $(window).trigger('scroll'); });
+            window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+            setTimeout(function () {
+              $(window).trigger('scroll');
+              requestAnimationFrame(function () {
+                $target.find('img').each(function () { this.offsetHeight; });
+                document.body.offsetHeight;
+              });
+            }, 400);
           } else {
             $('html, body').scrollTop(scrollTop);
             $(window).trigger('scroll');
