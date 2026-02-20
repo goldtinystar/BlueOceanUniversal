@@ -4,11 +4,6 @@ html, body, .cover {
 	height: 100% ;
 }
 
-/* Keep photos sharp (avoid blur from scaling/compositing) */
-img {
-	image-rendering: -webkit-optimize-contrast;
-}
-
 .cover {
 	position: relative;
 	background: url('/img/couchfriends.jpg') center no-repeat;
@@ -88,6 +83,10 @@ blockquote cite {
 
 section {
 	padding: 100px;
+}
+
+#home, #why-us, #team, #signup {
+	scroll-margin-top: 60px;
 }
 
 h2{
