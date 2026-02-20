@@ -147,7 +147,7 @@ They moved fast, asked the right questions, and delivered production-ready solut
 				</div>
 			</div>
 		</div>
-	  </section> -->
+	  </section>
 	  
 	  <footer>
 	  		crafted with &hearts; in calgary by <a href="m.ashwinkumar7@gmail.com">ashwin</a>
@@ -158,5 +158,19 @@ They moved fast, asked the right questions, and delivered production-ready solut
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Smooth scroll for navbar anchor links (ensures #team and others work) -->
+    <script>
+      $(function () {
+        $('.navbar a[href^="#"]').on('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
+          var $target = $(href);
+          if ($target.length) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: $target.offset().top - 60 }, 400);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
