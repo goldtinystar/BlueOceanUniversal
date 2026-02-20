@@ -34,14 +34,13 @@ html, body, .cover {
 }
 
 .cover-text h1 {
-	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-	font-size: 48px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 52px;
 	font-weight: 600;
-	color: #fff;
-	letter-spacing: 0.02em;
-	margin: 0 0 20px;
+	color: #f0ebe0;
+	letter-spacing: -0.02em;
+	margin: 0 0 16px;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-	line-height: 1.2;
 }
 
 .cover-text .lead {
