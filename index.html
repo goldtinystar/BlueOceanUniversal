@@ -211,7 +211,9 @@ They moved fast, asked the right questions, and delivered production-ready solut
             e.preventDefault();
             $('.navbar-nav li').removeClass('active');
             $(this).closest('li').addClass('active');
-            $('html, body').animate({ scrollTop: $target.offset().top - 60 }, 400, function () {
+            var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
+            var scrollTop = $scrollTo.offset().top - 60;
+            $('html, body').animate({ scrollTop: scrollTop }, 400, function () {
               $(window).trigger('scroll');
             });
           }
