@@ -167,7 +167,11 @@ They moved fast, asked the right questions, and delivered production-ready solut
           var $target = $(href);
           if ($target.length) {
             e.preventDefault();
-            $('html, body').animate({ scrollTop: $target.offset().top - 60 }, 400);
+            $('.navbar-nav li').removeClass('active');
+            $(this).closest('li').addClass('active');
+            $('html, body').animate({ scrollTop: $target.offset().top - 60 }, 400, function () {
+              $(window).trigger('scroll');
+            });
           }
         });
       });
