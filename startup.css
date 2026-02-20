@@ -15,13 +15,13 @@ body {
 }
 
 .cover {
-	background: url('img/couchfriends.jpg') top left no-repeat;
+	background: linear-gradient(to bottom, #1e2a3a 0, #1e2a3a 60px, transparent 140px),
+	            url('img/couchfriends.jpg') top left no-repeat;
 	background-size: cover;
 	display: table;
 	width: 100%;
 	padding: 0 20%;
 	box-shadow: inset 0 0 100px #100;
-	
 }
 
 .cover-text {
@@ -38,8 +38,9 @@ body {
 	letter-spacing: -4px;
 }
 
+/* Shared dark blue-gray so navbar and hero blend */
 .navbar {
-	background-color: #4777A3;
+	background-color: #1e2a3a;
 	border: none;
 }
 
