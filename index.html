@@ -211,25 +211,30 @@ They moved fast, asked the right questions, and delivered production-ready solut
         };
         var sectionToPath = { '#home': '/us/en/home', '#why-us': '/us/en/about', '#team': '/us/en/team', '#signup': '/us/en/contact' };
 
-        function scrollToSection(sectionId) {
-          var $target = $(sectionId);
-          if (!$target.length) return;
-          var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
-          var scrollTop = $scrollTo.offset().top - 60;
-          $('html, body').animate({ scrollTop: scrollTop }, 400, function () { $(window).trigger('scroll'); });
-        }
-
         function setActiveNav(path) {
           $('.navbar-nav li').removeClass('active');
           $('.navbar-nav a[href="' + path + '"]').closest('li').addClass('active');
         }
 
-        function handlePath(pathname) {
+        function scrollToSection(sectionId, animate) {
+          var $target = $(sectionId);
+          if (!$target.length) return;
+          var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
+          var scrollTop = $scrollTo.offset().top - 60;
+          if (animate) {
+            $('html, body').animate({ scrollTop: scrollTop }, 400, function () { $(window).trigger('scroll'); });
+          } else {
+            $('html, body').scrollTop(scrollTop);
+            $(window).trigger('scroll');
+          }
+        }
+
+        function handlePath(pathname, animate) {
           var path = pathname || window.location.pathname;
           if (path === '' || path === '/') path = '/us/en/home';
           var sectionId = pathToSection[path];
           if (sectionId) {
-            scrollToSection(sectionId);
+            scrollToSection(sectionId, !!animate);
             setActiveNav(path);
           }
         }
@@ -240,10 +245,10 @@ They moved fast, asked the right questions, and delivered production-ready solut
           if (history.pushState) history.pushState({}, '', path);
           setActiveNav(path);
           var sectionId = pathToSection[path];
-          if (sectionId) scrollToSection(sectionId);
+          if (sectionId) scrollToSection(sectionId, true);
         });
 
-        handlePath(window.location.pathname);
+        setTimeout(function () { handlePath(window.location.pathname, false); }, 0);
 
         $(window).on('popstate', function () {
           handlePath(window.location.pathname);

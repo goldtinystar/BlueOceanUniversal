@@ -4,6 +4,14 @@ html, body, .cover {
 	height: 100% ;
 }
 
+/* Keep images and photos sharp (avoid blur from compositing/animations) */
+img {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
 .cover {
 	position: relative;
 	background: url('img/couchfriends.jpg') center no-repeat;
