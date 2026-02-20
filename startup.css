@@ -4,11 +4,6 @@ html, body, .cover {
 	height: 100% ;
 }
 
-/* When scrolling to anchor links, show section below navbar (not under it) */
-#home, #why-us, #team, #signup {
-	scroll-margin-top: 51px;
-}
-
 .cover {
 	background: url('img/couchfriends.jpg') top left no-repeat;
 	background-size: cover;
