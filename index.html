@@ -45,10 +45,10 @@
 			
 				<div class="collapse navbar-collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#home">Home</a></li>
-					<li><a href="#why-us">About</a></li>		
-					<li><a href="#team">Our Team</a></li>
-					<li><a href="#signup">Contact</a></li>
+					<li class="active"><a href="/us/en/home">Home</a></li>
+					<li><a href="/us/en/about">About</a></li>
+					<li><a href="/us/en/team">Our Team</a></li>
+					<li><a href="/us/en/contact">Contact</a></li>
 				 	</ul>
 				</div>	
 			</div><!-- container -->
@@ -74,7 +74,7 @@ They moved fast, asked the right questions, and delivered production-ready solut
 	  	</section>
 	  
 	  	<section id="why-us" >
-	  		<h2>Why BlueOceanUniversal ?</h2>
+	  		<h2>Why BlueOceanUniversal?</h2>
 	  			<div class="container">
 					<div class="row">
 						<div class="col-sm-4">
@@ -200,23 +200,53 @@ They moved fast, asked the right questions, and delivered production-ready solut
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- Smooth scroll for navbar anchor links (ensures #team and others work) -->
+    <!-- Nav: update URL and scroll to section (/us/en/home, /us/en/about, /us/en/team, /us/en/contact) -->
     <script>
       $(function () {
-        $('.navbar a[href^="#"]').on('click', function (e) {
-          var href = this.getAttribute('href');
-          if (href === '#') return;
-          var $target = $(href);
-          if ($target.length) {
-            e.preventDefault();
-            $('.navbar-nav li').removeClass('active');
-            $(this).closest('li').addClass('active');
-            var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
-            var scrollTop = $scrollTo.offset().top - 60;
-            $('html, body').animate({ scrollTop: scrollTop }, 400, function () {
-              $(window).trigger('scroll');
-            });
+        var pathToSection = {
+          '/us/en/home': '#home',
+          '/us/en/about': '#why-us',
+          '/us/en/team': '#team',
+          '/us/en/contact': '#signup'
+        };
+        var sectionToPath = { '#home': '/us/en/home', '#why-us': '/us/en/about', '#team': '/us/en/team', '#signup': '/us/en/contact' };
+
+        function scrollToSection(sectionId) {
+          var $target = $(sectionId);
+          if (!$target.length) return;
+          var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
+          var scrollTop = $scrollTo.offset().top - 60;
+          $('html, body').animate({ scrollTop: scrollTop }, 400, function () { $(window).trigger('scroll'); });
+        }
+
+        function setActiveNav(path) {
+          $('.navbar-nav li').removeClass('active');
+          $('.navbar-nav a[href="' + path + '"]').closest('li').addClass('active');
+        }
+
+        function handlePath(pathname) {
+          var path = pathname || window.location.pathname;
+          if (path === '' || path === '/') path = '/us/en/home';
+          var sectionId = pathToSection[path];
+          if (sectionId) {
+            scrollToSection(sectionId);
+            setActiveNav(path);
           }
+        }
+
+        $('.navbar-nav a[href^="/us/en/"]').on('click', function (e) {
+          e.preventDefault();
+          var path = this.getAttribute('href');
+          if (history.pushState) history.pushState({}, '', path);
+          setActiveNav(path);
+          var sectionId = pathToSection[path];
+          if (sectionId) scrollToSection(sectionId);
+        });
+
+        handlePath(window.location.pathname);
+
+        $(window).on('popstate', function () {
+          handlePath(window.location.pathname);
         });
       });
     </script>
