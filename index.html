@@ -7,11 +7,12 @@
     
 
     <title>BlueOceanUniversal</title>
-    <link rel="icon" href="/img/BlueOcean.png" type="image/png">
+    <link rel="icon" href="img/BlueOcean.png" type="image/png">
 
     <!-- Bootstrap -->
-	  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	  <link href="/startup.css" rel="stylesheet">
+	  
+	  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="startup.css" rel="stylesheet">
 	  
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,18 +37,18 @@
 					<span class="icon-bar"></span>
 					</button>
 				
-					<a class="navbar-brand" href="/us/en/" style="font-size: 20px;">
-						<img src="/img/BlueOcean.png" alt="BlueOceanUniversal" class="img-circle" style="width: 32px; height: 34px; display: inline-block; vertical-align: middle; margin-right: 8px; background: transparent;">
+					<a class="navbar-brand" href="indx.html" style="font-size: 20px;">
+						<img src="img/BlueOcean.png" alt="BlueOceanUniversal" class="img-circle" style="width: 32px; height: 34px; display: inline-block; vertical-align: middle; margin-right: 8px; background: transparent;">
 						BlueOceanUniversal
 					</a>
 				</div><!-- navbar-header -->
 			
 				<div class="collapse navbar-collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="/us/en/">Home</a></li>
-					<li><a href="/us/en/about">About</a></li>
-					<li><a href="/us/en/team">Our Team</a></li>
-					<li><a href="/us/en/contact">Contact</a></li>
+					<li class="active"><a href="#home">Home</a></li>
+					<li><a href="#why-us">About</a></li>		
+					<li><a href="#team">Our Team</a></li>
+					<li><a href="#signup">Contact</a></li>
 				 	</ul>
 				</div>	
 			</div><!-- container -->
@@ -99,25 +100,25 @@ They moved fast, asked the right questions, and delivered production-ready solut
 		  <div class="container">
 			<div class="row">
 				<div class="col-sm-3">
-					<img src="/img/jane.jpg" alt="Woman's face" class="img-circle" style="width: 128px; height: 128px;">
+					<img src="img/jane.jpg" alt="Woman's face" class="img-circle" style="width: 128px; height: 128px;">
 					<h4>Tyler Plummer</h4>
 					<p>CEO @ BlueOceanUniversal</p>	
 				</div>
 
 				<div class="col-sm-3">
-					<img src="/img/jim.jpg" alt="Man's face" class="img-circle" style="width: 128px; height: 128px;">
+					<img src="img/jim.jpg" alt="Man's face" class="img-circle" style="width: 128px; height: 128px;">
 					<h4>Ueritom Borges</h4>
 					<p>CTO @ BlueOceanUniversal</p>	
 				</div>
 
 				<div class="col-sm-3">
-					<img src="/img/john.jpg" alt="Man's face" class="img-circle" style="width: 128px; height: 128px;">
+					<img src="img/john.jpg" alt="Man's face" class="img-circle" style="width: 128px; height: 128px;">
 					<h4>Brandon FL</h4>
 					<p>VP @ BlueOceanUniversal</p>	
 				</div>		
 				
 				<div class="col-sm-3">
-					<img src="/img/jenny.jpg" alt="Woman's face" class="img-circle" style="width: 128px; height: 128px;">
+					<img src="img/jenny.jpg" alt="Woman's face" class="img-circle" style="width: 128px; height: 128px;">
 					<h4>John.J</h4>
 					<p>HR @ BlueOceanUniversal</p>	
 				</div>
@@ -198,52 +199,25 @@ They moved fast, asked the right questions, and delivered production-ready solut
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Path-based nav: update URL to /us/en/team etc. and scroll to section -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Smooth scroll for navbar anchor links (ensures #team and others work) -->
     <script>
       $(function () {
-        var pathToSection = {
-          '/us/en/': '#home',
-          '/us/en': '#home',
-          '/us/en/about': '#why-us',
-          '/us/en/team': '#team',
-          '/us/en/contact': '#signup'
-        };
-        var sectionToPath = { '#home': '/us/en/', '#why-us': '/us/en/about', '#team': '/us/en/team', '#signup': '/us/en/contact' };
-
-        function scrollToSection(sectionId, setActive) {
-          var $target = $(sectionId);
-          if (!$target.length) return;
-          var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
-          var scrollTop = $scrollTo.offset().top - 60;
-          $('html, body').animate({ scrollTop: scrollTop }, 400, function () { $(window).trigger('scroll'); });
-          if (setActive !== false) {
-            $('.navbar-nav li').removeClass('active');
-            $('.navbar-nav a[href="' + (sectionToPath[sectionId] || sectionId) + '"]').closest('li').addClass('active');
-          }
-        }
-
-        $('.navbar-nav a[href^="/us/en"]').on('click', function (e) {
-          e.preventDefault();
-          var path = this.getAttribute('href').replace(/\/$/, '') || '/us/en';
-          var normPath = path === '/us/en' ? '/us/en/' : path;
-          var sectionId = pathToSection[normPath] || pathToSection[path];
-          if (sectionId) {
-            history.pushState({ section: sectionId }, '', normPath);
+        $('.navbar a[href^="#"]').on('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
+          var $target = $(href);
+          if ($target.length) {
+            e.preventDefault();
             $('.navbar-nav li').removeClass('active');
             $(this).closest('li').addClass('active');
-            scrollToSection(sectionId, false);
+            var $scrollTo = $target.find('h2').first().length ? $target.find('h2').first() : $target;
+            var scrollTop = $scrollTo.offset().top - 60;
+            $('html, body').animate({ scrollTop: scrollTop }, 400, function () {
+              $(window).trigger('scroll');
+            });
           }
         });
-
-        window.addEventListener('popstate', function (e) {
-          var sectionId = (e.state && e.state.section) || pathToSection[location.pathname] || pathToSection[location.pathname.replace(/\/$/, '') || '/us/en'];
-          if (sectionId) scrollToSection(sectionId);
-        });
-
-        var path = location.pathname || '/us/en/';
-        var sectionId = pathToSection[path] || pathToSection[path.replace(/\/$/, '')];
-        if (sectionId && sectionId !== '#home') scrollToSection(sectionId);
       });
     </script>
   </body>
