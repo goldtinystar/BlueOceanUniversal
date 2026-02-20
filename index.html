@@ -130,22 +130,68 @@ They moved fast, asked the right questions, and delivered production-ready solut
 		 </div>
 	  </section>
 	  
-	 <section id="signup">
+	 <section id="signup" class="contact-section">
 	  	<div class="container">
-		 	<h2>Subscribe for our Newsletter</h2>
-			<p class="lead">We'll send you about our latest updates, sizzling sales and upcoming trends!</p>
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<form>
-						<div class="input-group">
-							<input type="text" class="form-control input-lg" placeholder="Your email address...">
-						<span class="input-group-btn">
-							<button class="btn btn-warning btn-lg" type="button">Handcraft it</button>
-							</span> 
-						</div>
-					</form>
+		 	<p class="contact-required-note">(*) Indicates fields required to complete this form.</p>
+		 	<h2>Contact Information</h2>
+			<form class="contact-form">
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<label for="first-name">First Name <span class="required">*</span></label>
+						<input type="text" class="form-control" id="first-name" name="first-name" required>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="last-name">Last Name <span class="required">*</span></label>
+						<input type="text" class="form-control" id="last-name" name="last-name" required>
+					</div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<label for="email">Email <span class="required">*</span></label>
+						<input type="email" class="form-control" id="email" name="email" required>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="phone">Phone <span class="required">*</span></label>
+						<input type="tel" class="form-control" id="phone" name="phone" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="country">Country or region of residence <span class="required">*</span></label>
+					<select class="form-control" id="country" name="country" required>
+						<option value="">Select...</option>
+						<option value="US">US - United States</option>
+						<option value="CA">CA - Canada</option>
+						<option value="UK">UK - United Kingdom</option>
+						<option value="AU">AU - Australia</option>
+						<option value="OTHER">Other</option>
+					</select>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<label for="company">Company Name <span class="required">*</span></label>
+						<input type="text" class="form-control" id="company" name="company" required>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="job-title">Job Title <span class="required">*</span></label>
+						<input type="text" class="form-control" id="job-title" name="job-title" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="discuss">What would you like to discuss?</label>
+					<textarea class="form-control" id="discuss" name="discuss" rows="4" placeholder="Optional"></textarea>
+				</div>
+				<div class="form-group contact-consent">
+					<div class="checkbox">
+						<label><input type="checkbox" name="consent-email"> I allow BlueOceanUniversal to use my contact data and keep me informed of services and offerings by email.</label>
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox" name="consent-phone"> I also allow to be contacted by phone.</label>
+					</div>
+				</div>
+				<p class="contact-consent-text">Your consent is optional, and you can withdraw it at any time by submitting an <a href="#">opt-out request</a>. Also, you may unsubscribe from receiving marketing emails by clicking the <a href="#">unsubscribe link</a> in each email.</p>
+				<p class="contact-consent-text">By submitting this, you acknowledge you have read and understood the <a href="#">BlueOceanUniversal Privacy Statement</a>.</p>
+				<button type="submit" class="btn btn-contact-submit">Request Meeting</button>
+			</form>
 		</div>
 	  </section>
 	  
