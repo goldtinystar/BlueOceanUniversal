@@ -6,7 +6,7 @@ html, body, .cover {
 
 .cover {
 	position: relative;
-	background: url('/img/couchfriends.jpg') center no-repeat;
+	background: url('img/couchfriends.jpg') center no-repeat;
 	background-size: cover;
 	display: table;
 	width: 100%;
@@ -101,7 +101,7 @@ h2 + p{
 
 
 #team {
-	background: url('/img/fan.jpg') top left no-repeat;
+	background: url('img/fan.jpg') top left no-repeat;
 	background-size: cover;
 	color: white;
 	text-align: center;
