@@ -1,21 +1,17 @@
 /* Startup Website */
 
-/* Ensure navbar sticks to top when scrolling */
-.navbar.navbar-fixed-top {
-	position: fixed !important;
-	top: 0 !important;
-	left: 0 !important;
-	right: 0 !important;
-	z-index: 1030;
+html, body, .cover {
+	height: 100% ;
 }
 
-/* Prevent page content from sliding under the fixed navbar */
+/* Reserve space for fixed navbar so content is not covered */
 body {
 	padding-top: 51px;
 }
 
-html, body, .cover {
-	height: 100% ;
+/* When scrolling to anchor links, show section below navbar (not under it) */
+#home, #why-us, #team, #signup {
+	scroll-margin-top: 51px;
 }
 
 .cover {
